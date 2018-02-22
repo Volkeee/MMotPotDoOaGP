@@ -9,15 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.volkeee.mmotpotdooagp.R;
 import com.example.volkeee.mmotpotdooagp.utils.Calculations;
 import com.example.volkeee.mmotpotdooagp.utils.OnFragmentInteractionListener;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.util.ArrayList;
 
 public class Lab1Fragment extends Fragment {
 
@@ -28,6 +25,7 @@ public class Lab1Fragment extends Fragment {
     private TextInputEditText editTextAccuracy;
     private TextInputEditText editTextStep;
     private GraphView mainGraphView;
+    private Button buttonCalculate;
 
     public Lab1Fragment() {
         // Required empty public constructor
@@ -57,12 +55,21 @@ public class Lab1Fragment extends Fragment {
         editTextEndofArray = inflatedView.findViewById(R.id.textInputEditText_end_of_array);
         editTextAccuracy = inflatedView.findViewById(R.id.textInputEditText_accuracy);
         editTextStep = inflatedView.findViewById(R.id.textInputEditText_step);
-
+        buttonCalculate = inflatedView.findViewById(R.id.button);
 
         editTextStartofArray.setText("-10.0");
         editTextEndofArray.setText("10.0");
         editTextStep.setEnabled(false);
         editTextAccuracy.setText("0.0001");
+
+        buttonCalculate.setOnClickListener(view -> {
+            mainGraphView.addSeries(Calculations.calculateCoordinatesForGraph(
+                    Double.valueOf(editTextStartofArray.getText().toString()),
+                    Double.valueOf(editTextEndofArray.getText().toString()),
+                    Double.valueOf(editTextAccuracy.getText().toString()),
+                    parameter -> Math.log(parameter) - 5 + parameter));
+        });
+
         return inflatedView;
     }
 
