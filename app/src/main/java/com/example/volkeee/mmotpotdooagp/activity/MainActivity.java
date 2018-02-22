@@ -2,11 +2,9 @@ package com.example.volkeee.mmotpotdooagp.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -25,6 +23,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnFragmentInteractionListener {
     private FrameLayout fragmentContainer;
     private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
     private Lab1Fragment lab1Fragment;
     private Lab2Fragment lab2Fragment;
 
@@ -89,12 +88,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_lab_1) {
-            fragmentManager.beginTransaction()
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setTransition(android.R.transition.slide_right)
                     .replace(R.id.fragment_container, lab1Fragment)
                     .commit();
 
         } else if (id == R.id.nav_lab_2) {
-            fragmentManager.beginTransaction()
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setTransition(android.R.transition.slide_right)
                     .replace(R.id.fragment_container, lab2Fragment)
                     .commit();
         }
