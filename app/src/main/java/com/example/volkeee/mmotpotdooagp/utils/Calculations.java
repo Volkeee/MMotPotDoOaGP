@@ -1,5 +1,12 @@
 package com.example.volkeee.mmotpotdooagp.utils;
 
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.ArrayList;
+
+import static java.lang.Double.NaN;
+
 /**
  * Created by volkeee on 2/21/18.
  */
@@ -18,6 +25,18 @@ public class Calculations {
             c = (a + b) / 2;
         }
         return c;
+    }
+
+    public static LineGraphSeries<DataPoint> calculateCoordinatesForGraph(Double startOfRange, Double endOfRange, Double step, IFunction function) {
+        ArrayList<DataPoint> dataPoints = new ArrayList<>();
+        for (Double iterator = startOfRange; iterator <= endOfRange; iterator += step) {
+            Double y = function.calculate(iterator);
+            if (!Double.isNaN(y) && !Double.isInfinite(y)) {
+                DataPoint dataPoint = new DataPoint(iterator, y);
+                dataPoints.add(dataPoint);
+            }
+        }
+        return new LineGraphSeries<>(dataPoints.toArray(new DataPoint[dataPoints.size()]));
     }
 
     public interface IFunction {
