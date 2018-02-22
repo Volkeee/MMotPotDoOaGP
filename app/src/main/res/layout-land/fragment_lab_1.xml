@@ -24,7 +24,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Accuracy"
-                    android:inputType="numberDecimal" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -60,7 +60,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:hint="Start of array"
-                    android:inputType="numberDecimal" />
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -76,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="End of array"
-                    android:inputType="numberDecimal" />
+                    android:inputType="text|numberDecimal" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -90,8 +90,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Step"
-                    android:inputType="numberDecimal" />
+                    android:inputType="text|numberDecimal" />
+
             </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:text="@string/btn_title_calculate"
+                tools:layout_editor_absoluteY="8dp" />
         </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
