@@ -5,8 +5,6 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 
-import static java.lang.Double.NaN;
-
 /**
  * Created by volkeee on 2/21/18.
  */
